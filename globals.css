@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #080C14;
+  --color-surface: #0E1420;
+  --color-surface-2: #141C2B;
+  --color-accent: #00D4FF;
+  --color-accent-dim: rgba(0, 212, 255, 0.15);
+  --color-warning: #F59E0B;
+  --color-success: #10B981;
+  --color-danger: #EF4444;
+  --color-text: #F0F4FF;
+  --color-text-muted: #7B8BA5;
+  --color-border: #1E293B;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
+/* ── Glass Card ── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.card:hover {
+  border-color: rgba(0, 212, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 212, 255, 0.05);
+}
+
+/* ── Buttons ── */
+.btn-accent {
+  background: var(--color-accent);
+  color: #080C14;
+  font-weight: 600;
+  padding: 0.6rem 1.5rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  transition: all 0.2s;
+}
+.btn-accent:hover {
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+/* ── Gradient Text ── */
+.gradient-text {
+  background: linear-gradient(135deg, #00D4FF, #00FFB2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ── Gauge Animation ── */
+@keyframes gauge-fill {
+  from { stroke-dashoffset: 283; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px rgba(0,212,255,0.2); }
+  50% { box-shadow: 0 0 24px rgba(0,212,255,0.5); }
+}
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+.animate-gauge {
+  animation: gauge-fill 1.5s ease-out both;
+}
+.animate-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ── Confidence Badges ── */
+.badge-high { background: rgba(16,185,129,0.15); color: #10B981; }
+.badge-medium { background: rgba(0,212,255,0.15); color: #00D4FF; }
+.badge-low { background: rgba(245,158,11,0.15); color: #F59E0B; }
+.badge-conflict { background: rgba(239,68,68,0.15); color: #EF4444; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-text-muted); }
